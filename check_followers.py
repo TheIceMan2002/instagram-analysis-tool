@@ -27,7 +27,7 @@ def find_non_followers(followers_file, following_file):
                     followers.add(user['value'])
                 elif 'href' in user:
                     # Extract username from URL
-                    username = user['href'].splif('/')[-2]
+                    username = user['href'].rstrip('/').split('/')[-1]
                     followers.add(username)
 
     # Extract usernames from following (handle different formats)
@@ -48,7 +48,7 @@ def find_non_followers(followers_file, following_file):
                     if 'value' in user:
                         following.add(user['value'])
                     elif 'href' in user:
-                        username = user['href'].split('/')[-1]
+                        username = user['href'].rstrip('/').split('/')[-1]
                         following.add(username)
     
 
